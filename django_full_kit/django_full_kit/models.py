@@ -86,5 +86,4 @@ class AdvancedBaseUser(AbstractUser):
         return super().get_short_name()
     
     def __str__(self):
-        return super().__str__()
-    
+        return self.get_full_name or self.username
