@@ -32,7 +32,17 @@ class VideoField(models.FileField):
     default_validators = [
         utils.video_validator
     ]
-    description = "support video number"
+    description = "support video"
+
+class VideoField(models.FileField):
+    """
+    Custom Django model field for video
+    Usage: like models.EmailField
+    """
+    default_validators = [
+        utils.video_validator
+    ]
+    description = "support audio"
 
 
 
