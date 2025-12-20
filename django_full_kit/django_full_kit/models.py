@@ -3,7 +3,7 @@ from django.contrib.auth.models import AbstractUser
 from django.contrib.auth import get_user_model
 from django.utils.translation import gettext_lazy as _
 from django.utils import timezone
-from .validators import utils
+from utils import validators
 from .upload_paths import user_avatar_upload_path
 
 User = get_user_model()
@@ -17,7 +17,7 @@ class PhoneNumberField(models.CharField):
     Usage: like models.EmailField
     """
     default_validators = [
-        utils.phone_number_validator
+        validators.phone_number_validator
     ]
 
     description = "International phone number"
@@ -33,7 +33,7 @@ class VideoField(models.FileField):
     Usage: like models.ImageField
     """
     default_validators = [
-        utils.video_validator
+        validators.video_validator
     ]
     description = "support video"
 
@@ -44,7 +44,7 @@ class AudioField(models.FileField):
     Usage: like models.ImageField
     """
     default_validators = [
-        utils.audio_validator
+        validators.audio_validator
     ]
     description = "support audio"
 
