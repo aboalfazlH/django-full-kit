@@ -1,6 +1,17 @@
-from django.core.validators import FileExtensionValidator
+from django.core.validators import FileExtensionValidator,RegexValidator
+from django.utils.translation import gettext_lazy as _
 
 
+# --------------------------
+# Charecter validators
+# --------------------------
+phone_number_validator = RegexValidator(
+    regex=r'^\+[1-9]\d{1,14}$',
+    message=_("Phone number must be entered in E.164 format (e.g. +989123456789).")
+)
+# --------------------------
+# File validators
+# --------------------------
 video_validator = FileExtensionValidator(
     allowed_extensions = [
     "mp4", "mkv", "mov", "avi", "wmv", "flv", "webm", "mpeg", "mpg",
@@ -10,7 +21,8 @@ video_validator = FileExtensionValidator(
     "h265", "hevc", "vp8", "vp9", "av1", "yuv", "y4m", "bik", "smk",
     "drc", "amv", "nsv", "m4v", "ismv", "isma", "wtv", "dvr-ms",
     "ivf", "tsv", "mng"
-    ]
+    ],
+    message=_("You can only use video")
 )   
 
 audio_validator = FileExtensionValidator(
@@ -22,5 +34,18 @@ audio_validator = FileExtensionValidator(
     "wv", "ape", "mpc", "vqf", "s3m", "xm", "it", "mod", "mtm",
     "dsd", "dsf", "dff", "brstm", "adx", "ast", "hca", "at3",
     "voc", "ivs", "ivf", "fla", "oga", "mogg", "8svx", "16svx"
-    ]
+    ],
+    message=_("You can only use audio")
+)
+
+# --------------------------
+# Url Validators
+# --------------------------
+github_url_validator = RegexValidator(
+    regex=r"^(https?:\/\/)?(www\.)?github\.com(\/.*)?$",
+    message=_("Enter a valid GitHub URL.")
+)
+gitlab_url_validator = RegexValidator(
+    regex=r"^(https?:\/\/)?(www\.)?gitlab\.com(\/.*)?$",
+    message=_("Enter a valid GitLab URL.")
 )

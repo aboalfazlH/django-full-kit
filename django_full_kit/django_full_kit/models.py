@@ -2,9 +2,9 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.contrib.auth import get_user_model
 from django.utils.translation import gettext_lazy as _
-from .validators import auth,utils
-from .upload_paths import user_avatar_upload_path
 from django.utils import timezone
+from .validators import utils
+from .upload_paths import user_avatar_upload_path
 
 User = get_user_model()
 
@@ -17,7 +17,7 @@ class PhoneNumberField(models.CharField):
     Usage: like models.EmailField
     """
     default_validators = [
-        auth.phone_number_validator
+        utils.phone_number_validator
     ]
 
     description = "International phone number"

@@ -1,5 +1,4 @@
 from django.utils import timezone
-import uuid
 
 def user_avatar_upload_path(instance,filename):
     now = timezone.now()
