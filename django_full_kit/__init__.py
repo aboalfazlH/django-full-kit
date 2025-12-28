@@ -8,4 +8,4 @@ common project needs such as users and articles.
 """
 
 __all__ = ["apps"]
-__version__ = "0.1.0"
+__version__ = "0.2.0"
